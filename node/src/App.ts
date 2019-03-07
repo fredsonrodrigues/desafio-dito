@@ -1,4 +1,5 @@
 import express from "express";
+import { TimelineController } from "./controllers/TimelineController";
 
 class App {
 
@@ -30,6 +31,7 @@ class App {
 
         // Rotas importadas
         this.express.use('/', router);
+        this.express.use('/get-events/', TimelineController.getEvents);
     }
 }
 export default new App().express;
