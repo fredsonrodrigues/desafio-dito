@@ -1,0 +1,22 @@
+version: '3'
+services:
+  timeline:
+    container_name: timeline
+    build:
+      context: .
+      dockerfile: ./timeline-events/Dockerfile
+      args:
+        proxy: ""
+        sproxy: ""
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    container_name: nginx
+    depends_on: 
+      - timeline
+    restart: unless-stopped
