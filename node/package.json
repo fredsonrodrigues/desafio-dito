@@ -9,7 +9,8 @@
     "fmt": "prettier --write \"src/**/*.ts\"",
     "fmt:p": "prettier-package-json --write \"*.json\"",
     "prod": "npm run build && node dist/index.js",
-    "test": "jest --no-cache"
+    "test": "jest --no-cache",
+    "production": "echo Make sure you are in production environment!! && node index.js"
   },
   "dependencies": {
     "@types/express": "^4.16.0",

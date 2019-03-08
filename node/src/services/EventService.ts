@@ -1,4 +1,6 @@
 import fetch from 'node-fetch'
+import { Event } from '../models/Event';
+import { Product } from '../models/Product';
 
 export class EventService {
     constructor() {
@@ -18,8 +20,26 @@ export class EventService {
     
     async getEventsData() {
         try {
+            var timeline = new Array<Event>();
             let data = await this.getEventsFromService();
-            return data;
+            let store = data.events.filter((e: any) => e.event === "comprou");
+            let product = data.events.filter((e: any) => e.event === "comprou-produto");
+
+            store.map((el: any) => {
+                let event = new Event(el);
+                let products = new Array<Product>();
+                product.map((el: any) =>
+                    el.custom_data.map((e: any) => {
+                        if (e.key === "transaction_id" && e.value === event.transaction_id) {
+                            products.push(new Product(el))
+                        }
+                    })
+                );
+                event.products = products;
+                timeline.push(event)
+            })
+
+            return timeline;
         } catch (error) {
             throw error;
         }

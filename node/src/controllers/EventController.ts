@@ -14,7 +14,7 @@ export class EventController {
         try {
             let tmlSrv = new EventService();
             let result = await tmlSrv.getEventsData();
-            res.json(result)
+            res.json({timeline: result})
         } catch (error) {
             res.json(error)
         }
