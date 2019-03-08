@@ -1,5 +1,5 @@
 import express from "express";
-import { TimelineController } from "./controllers/TimelineController";
+import { EventController } from "./controllers/EventController";
 
 class App {
 
@@ -22,6 +22,7 @@ class App {
     */
     private routes(): void {
         let router = express.Router();
+        let eventController = new EventController();
 
         router.get('/', (req, res) => {
             res.json({
@@ -31,7 +32,7 @@ class App {
 
         // Rotas importadas
         this.express.use('/', router);
-        this.express.use('/get-events/', TimelineController.getEvents);
+        this.express.use('/get-events/', eventController.router);
     }
 }
 export default new App().express;

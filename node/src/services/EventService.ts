@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 
-export class TimelineService {
+export class EventService {
     constructor() {
         
     }

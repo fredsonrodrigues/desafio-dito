@@ -1,4 +1,4 @@
-import { Timeline } from "../models/Timeline";
+import { Event } from "../models/Event";
 
 const data = {
   events: [
@@ -33,7 +33,7 @@ const data = {
 };
 
 test("Criando Objeto Timeline", async () => {
-    let timeline = new Timeline(data);
+    let timeline = new Event(data);
     expect(timeline).toEqual({
         timestamp: '2016-09-22T13:57:31.2311892-03:00',
         revenue: 250,

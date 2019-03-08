@@ -1,6 +1,6 @@
 import {Product} from "./Product";
 
-export class Timeline {
+export class Event {
 
     timestamp: Date = new Date;
     revenue: String = "";
