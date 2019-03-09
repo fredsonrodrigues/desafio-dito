@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "node-typescript",
+  "name": "timeline-events",
   "version": "1.0.0",
   "scripts": {
     "build": "tsc",
