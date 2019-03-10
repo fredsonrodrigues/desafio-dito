@@ -1,5 +1,4 @@
-import { Schema, Model } from "mongoose";
-import { mongoose } from "../bin/Conf";
+import { Schema, Model, model } from "mongoose";
 import { IEvent } from "./IEvent"
 
 var UserEventSchema: Schema = new Schema({
@@ -7,4 +6,4 @@ var UserEventSchema: Schema = new Schema({
     event: { type: String, required: true }
 }, { collection: 'events' });
 
-export const UserEvent: Model<IEvent> = mongoose.model<IEvent>("UserEvent", UserEventSchema);
+export const UserEvent: Model<IEvent> = model<IEvent>("UserEvent", UserEventSchema);

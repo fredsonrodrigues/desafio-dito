@@ -1,5 +1,6 @@
 import express from "express";
 import * as bodyParser from 'body-parser';
+import { db } from "./bin/Conf";
 import { EventController } from "./controllers/EventController";
 
 class App {
@@ -10,6 +11,7 @@ class App {
         this.express = express();
         this.middleware()
         this.routes()
+        this.database()
     }
     /* 
         Configurações de Middleware (CORS, Body Parser.. )
@@ -17,6 +19,10 @@ class App {
     private middleware(): void {
         this.express.use(bodyParser.json());
         this.express.use(bodyParser.urlencoded({ extended: false }));
+    }
+
+    private database(): void {
+        db.on("error", console.error.bind(console, "MongoDB Connection error"));
     }
 
     /* 
