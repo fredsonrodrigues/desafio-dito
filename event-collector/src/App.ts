@@ -1,6 +1,7 @@
 import express from "express";
 import * as bodyParser from 'body-parser';
-import { db } from "./bin/Conf";
+import * as env from 'dotenv';
+import mongoose = require('mongoose');
 import { EventController } from "./controllers/EventController";
 
 class App {
@@ -8,6 +9,7 @@ class App {
     public express: express.Application;
     
     constructor() {
+        env.config();
         this.express = express();
         this.middleware()
         this.routes()
@@ -22,6 +24,8 @@ class App {
     }
 
     private database(): void {
+        mongoose.connect(process.env.MONGODB_URL || '', { useNewUrlParser: true });
+        var db = mongoose.connection;
         db.on("error", console.error.bind(console, "MongoDB Connection error"));
     }
 
