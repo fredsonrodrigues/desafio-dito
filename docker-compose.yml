@@ -11,6 +11,18 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
+  
+  collector:
+    container_name: collector
+    build:
+      context: .
+      dockerfile: ./event-collector/Dockerfile
+      args:
+        proxy: ""
+        sproxy: ""
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
 
   nginx:
     build: ./nginx
@@ -19,4 +31,5 @@ services:
     container_name: nginx
     depends_on: 
       - timeline
+      - collector
     restart: unless-stopped
