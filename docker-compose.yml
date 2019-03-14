@@ -24,6 +24,18 @@ services:
     environment:
       - NODE_ENV=production
 
+  autocomplete:
+    container_name: autocomplete
+    build:
+      context: .
+      dockerfile: ./event-autocomplete/Dockerfile
+      args:
+        proxy: ""
+        sproxy: ""
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+
   nginx:
     build: ./nginx
     ports:
