@@ -1,7 +1,6 @@
 version: '3'
 services:
   timeline:
-    container_name: timeline
     build:
       context: .
       dockerfile: ./timeline-events/Dockerfile
@@ -13,7 +12,6 @@ services:
       - NODE_ENV=production
   
   collector:
-    container_name: collector
     build:
       context: .
       dockerfile: ./event-collector/Dockerfile
@@ -25,7 +23,6 @@ services:
       - NODE_ENV=production
 
   autocomplete:
-    container_name: autocomplete
     build:
       context: .
       dockerfile: ./event-autocomplete/Dockerfile
