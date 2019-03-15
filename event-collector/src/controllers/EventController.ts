@@ -18,6 +18,7 @@ export class EventController {
             let result = await evSrv.storeEventsData(ev);
             res.json(result)
         } catch (error) {
+            res.status(500);
             res.json(error)
         }
     }

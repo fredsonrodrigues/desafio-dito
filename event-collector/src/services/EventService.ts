@@ -12,7 +12,7 @@ export class EventService {
             let resp = await ev.save()
             return resp;
         } catch (error) {
-            throw error;
+            throw new Error(error);
         }
     }
 }

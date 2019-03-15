@@ -13,7 +13,7 @@ export class EventService {
             let data = await res.json();
             return data;
         } catch (error) {
-            throw error;
+            throw new Error(error);
         }
     }
 
@@ -41,7 +41,7 @@ export class EventService {
 
             return timeline;
         } catch (error) {
-            throw error;
+            throw new Error(error);
         }
     }
     
