@@ -29,18 +29,13 @@ class Timeline extends Component {
             )
         }
         return (
-            <div className="timeline is-centered">
-                <header className="timeline-header">
-                    <span className="tag is-medium is-warning">Início</span>
-                </header>
-                {this.state.timeline.map(el => {
+            <div class="timeline">
+                {this.state.timeline.map((el, key) => {
                     var date = new Date(el.timestamp)
+                    var odd = key % 2 === 0 ? true : false
                     return (
-                        <div className="timeline-item">
-                            <div className="timeline-marker is-icon">
-                                <i className="fa fa-flag"></i>
-                            </div>
-                            <div className="timeline-content">
+                        <div className={odd === true ? "container-timeline left" : "container-timeline right"}>
+                            <div className="content">
                                 <p className="heading">{date.toLocaleString()}</p>
                                 <p>Loja: {el.store_name}</p>
                                 <p>Valor da Compra: R$ {el.revenue}</p>
@@ -51,9 +46,6 @@ class Timeline extends Component {
                         </div>
                     )
                 })}
-                <div className="timeline-header">
-                    <span className="tag is-medium is-warning">Fim</span>
-                </div>
             </div>
         )
     }

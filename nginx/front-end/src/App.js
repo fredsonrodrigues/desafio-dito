@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Timeline, Home, AutocompleteComponent } from "./Pages";
-import 'bulma';
-import 'bulma-timeline';
 
 class App extends Component {
   render() {
@@ -18,13 +16,13 @@ class App extends Component {
                       <strong>Desafio Dito</strong>
                     </h1>
                   </Link>
-                    <span className="navbar-burger burger" data-target="navbarMenuHeroA">
+                  <span className="navbar-burger burger is-active" data-target="navbarMenuHeroA">
                       <span></span>
                       <span></span>
                       <span></span>
                     </span>
                   </div>
-                  <div id="navbarMenuHeroA" className="navbar-menu">
+                <div id="navbarMenuHeroA" className="navbar-menu is-active">
                     <div className="navbar-end">
                     <Link className="navbar-item" to="/">Home</Link>
                     <Link className="navbar-item" to="/timeline/">Timeline</Link>

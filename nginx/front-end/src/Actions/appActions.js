@@ -16,7 +16,7 @@ export const decreaseRate = (value) => dispatch => {
 
 export const getTimeline = () => async dispatch => {
     try {        
-        const resp = await fetch('http://localhost:8080/get-events/')
+        const resp = await fetch('http://localhost:8080/timeline-api/get-events/')
         const timeline = await resp.json()
         return dispatch({
             type: TIMELINE_LOADS,
@@ -32,7 +32,7 @@ export const getTimeline = () => async dispatch => {
 
 export const getAutocomplete = (value) => async dispatch => {
     try {
-        const resp = await fetch('http://localhost:8080/search-event/'+value)
+        const resp = await fetch('http://localhost:8080/autocomplete-api/search-event/'+value)
         const autocomplete = await resp.json()
         console.log(await autocomplete)
         return dispatch({
